@@ -9,7 +9,7 @@ public class GunController : MonoBehaviour
     public GameObject bullet;
     public Transform spawnBullet;
 
-
+    public GameObject menuInicial;
 
     void Start()
     {
@@ -25,6 +25,10 @@ public class GunController : MonoBehaviour
 
     void Shoot()
     {
+        if (menuInicial.activeSelf)
+        {
+            return;
+        }
         if (Input.GetButtonDown("Fire1"))
         {
             Instantiate(bullet, spawnBullet.position, transform.rotation);
@@ -45,5 +49,4 @@ public class GunController : MonoBehaviour
 
         sprite.flipY = (mousePos.x < screenPoint.x);
     }
-
 }

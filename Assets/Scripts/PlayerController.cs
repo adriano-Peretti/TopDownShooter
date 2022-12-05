@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject Loose;
     [SerializeField] float moveSpeed;
     Vector2 moveInput;
     Animator anim;
+    public GameObject enemySpawner;
 
     void Start()
     {
@@ -25,9 +27,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
+            YouLost();
         }
     }
 
-
+    private void YouLost()
+    {
+        Time.timeScale = 0f;
+        Loose.SetActive(true);
+    }
 }
